@@ -1,0 +1,19 @@
+{
+  "name": "todo-flux",
+  "version": "1.0.0",
+  "description": "flux application.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shandilyamanvesh/Todo-Flux.git"
+  },
+  "author": "manvesh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shandilyamanvesh/Todo-Flux/issues"
+  },
+  "homepage": "https://github.com/shandilyamanvesh/Todo-Flux#readme"
+}
