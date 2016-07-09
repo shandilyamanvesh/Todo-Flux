@@ -59,7 +59,7 @@ function destroyCompleted() {
 }
 
 //todo store.
-var ToDOStore = assign({}, EventEmitter.prototype, {
+var ToDoStore = assign({}, EventEmitter.prototype, {
 
     /**
      * Tests whether all the remaining TODO items are marked as completed.
@@ -123,4 +123,4 @@ var ToDOStore = assign({}, EventEmitter.prototype, {
 
 
 //export the todo store.
-module.exports = TodoStore;
+module.exports = ToDoStore;
