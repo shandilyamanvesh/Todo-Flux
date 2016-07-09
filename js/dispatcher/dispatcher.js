@@ -12,13 +12,13 @@ var Dispatcher = function() {
 
 Dispatcher.prototype = assign({}, Dispatcher.prototype, {
 
-    //Refister callback and return its index.
+    //Refister callback from stores and return its index.
     register: function(callback) {
         _callbacks.push(callback);
         return _callbacks.length - 1;
     },
 
-    //dispatch callbacks.
+    //dispatch callbacks to stores when receives an event from view-action/actionHelpers.
     dispatch: function(payload) {
 
         // First create array of promises for callbacks to reference.

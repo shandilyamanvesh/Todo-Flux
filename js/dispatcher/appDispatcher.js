@@ -4,8 +4,8 @@ var assign = require('object-assign');
 var AppDispatcher = assign({}, Dispatcher.prototype, {
 
     /**
-     * A bridge function between the views and the dispatcher, marking the action
-     * as a view action.
+     * A bridge function between the views/actionHelpers and the dispatcher, marking the action
+     * as a view action and then uses dispatchers's dispatch method to call stores.
      */
 
     handleViewAction: function(action) {
