@@ -101,27 +101,26 @@ var ToDOStore = assign({}, EventEmitter.prototype, {
      */
     removeChangeListener: function(callback) {
         this.removeListener(CHANGE_EVENT, callback);
-    }
+    },
+
+    /*
+     * Register callback to AppDispatcher to handle all updates
+     * params {object} action comes from appDispatcher which inturn is an event 
+     * raised by views/actionHelpers.
+     * Also we keep the index at which this callback is registered in dispatcher.
+     */
+    dispatcherIndex: AppDispatcher.register(function(payload) {
+        var text;
+        var action = payload.action;
+
+        switch (action.actionType) {
+            default: break;
+        }
+
+        return true;
+    })
 });
 
-
-/*
- * Register callback to AppDispatcher to handle all updates
- * params {object} action comes from appDispatcher which inturn is an event 
- * raised by views/actionHelpers.
- */
-
-// 
-AppDispatcher.register(function(action) {
-
-    var text;
-
-    switch (action.actionType) {
-
-        default: break;
-    }
-
-});
 
 //export the todo store.
 module.exports = TodoStore;
