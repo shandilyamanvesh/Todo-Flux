@@ -1,4 +1,5 @@
 var AppDispatcher = require('../dispatcher/appDispatcher');
+var TodoConstants = require('../constants/toDoConstants');
 var EventEmitter = require('events').EventEmitter;
 var assign = require('object-assign');
 
@@ -114,7 +115,15 @@ var ToDoStore = assign({}, EventEmitter.prototype, {
         var action = payload.action;
 
         switch (action.actionType) {
-            default: break;
+            case TodoConstants.TODO_CREATE:
+                text = action.text.trim();
+                if (text !== '') {
+                    create(text);
+                    ToDoStore.emitChange();
+                }
+                break;
+            default:
+                break;
         }
 
         return true;
