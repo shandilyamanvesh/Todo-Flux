@@ -2,10 +2,12 @@ var React = require('react');
 var TodoStore = require('../store/toDoStore');
 var Header = require('./react.header')
 var MainSection = require('./react.mainSection');
+var Footer = require('./react.footer');
 
 function getTodoState() {
     return {
-        allTodos: TodoStore.getAll()
+        allTodos: TodoStore.getAll(),
+        areAllComplete: TodoStore.areAllComplete()
     };
 }
 
@@ -34,7 +36,9 @@ var TodoApp = React.createClass({
     render: function() {
         return ( <div>
             <Header />
-            <MainSection allTodos={this.state.allTodos} /> 
+            <MainSection allTodos={this.state.allTodos} 
+            areAllComplete={this.state.areAllComplete} /> 
+            <Footer allTodos={this.state.allTodos} />
             </div>
         )
     }

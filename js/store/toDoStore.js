@@ -26,17 +26,17 @@ function create(text) {
  * @param  {string} id
  * @param {object} update is an object literal containing only the data to be updated.
  */
-function update(id, update) {
-    _todos[id] = assign({}, _todos[id], update);
+function update(id, updateObj) {
+    _todos[id] = assign({}, _todos[id], updateObj);
 }
 
 /**
  * Update all of the TODO items with the same object.
  * @param {object} update is an object literal containing only the data to be updated.
  */
-function updateAll(update) {
+function updateAll(updateObj) {
     for (var id in _todos) {
-        update(id, update);
+        update(id, updateObj);
     }
 }
 
@@ -121,6 +121,42 @@ var ToDoStore = assign({}, EventEmitter.prototype, {
                     create(text);
                     ToDoStore.emitChange();
                 }
+                break;
+            case TodoConstants.TODO_TOGGLE_COMPLETE_ALL:
+                if (ToDoStore.areAllComplete()) {
+                    updateAll({ complete: false });
+                } else {
+                    updateAll({ complete: true });
+                }
+                ToDoStore.emitChange();
+                break;
+
+            case TodoConstants.TODO_UNDO_COMPLETE:
+                update(action.id, { complete: false });
+                ToDoStore.emitChange();
+                break;
+
+            case TodoConstants.TODO_COMPLETE:
+                update(action.id, { complete: true });
+                ToDoStore.emitChange();
+                break;
+
+            case TodoConstants.TODO_UPDATE_TEXT:
+                text = action.text.trim();
+                if (text !== '') {
+                    update(action.id, { text: text });
+                    ToDoStore.emitChange();
+                }
+                break;
+
+            case TodoConstants.TODO_DESTROY:
+                destroy(action.id);
+                ToDoStore.emitChange();
+                break;
+
+            case TodoConstants.TODO_DESTROY_COMPLETED:
+                destroyCompleted();
+                ToDoStore.emitChange();
                 break;
             default:
                 break;

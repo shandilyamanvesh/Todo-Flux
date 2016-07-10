@@ -10,7 +10,8 @@ var TodoTextInput = React.createClass({
         id: ReactPropTypes.string,
         placeholder: ReactPropTypes.string,
         onSave: ReactPropTypes.func.isRequired,
-        value: ReactPropTypes.string
+        value: ReactPropTypes.string,
+        className: ReactPropTypes.string
     },
 
     //set initial state.
@@ -42,7 +43,8 @@ var TodoTextInput = React.createClass({
 
     //returns text input.
     render: function() {
-        return ( <input id = { this.props.id }
+        return ( <input className={this.props.className}
+            id = { this.props.id }
             placeholder = { this.props.placeholder }
             onBlur = { this.save }
             onChange = { this.onChange }

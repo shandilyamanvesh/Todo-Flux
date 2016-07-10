@@ -16,11 +16,11 @@ var TodoHeader = React.createClass({
 
     //returns object to be rendered. 
     render: function() {
-        return ( < header id = "header" >
+        return ( <header id = "header">
 
-            < h1 > todos < /h1> 
+            <h1> todos </h1> 
 
-            < TodoTextInput id = "new-todo"
+            <TodoTextInput id = "new-todo"
             placeholder = "Please insert your item here."
             onSave = { this.onSave }
             /> </header >

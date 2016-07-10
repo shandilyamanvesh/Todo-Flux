@@ -7,7 +7,13 @@ var MainSection = React.createClass({
 
             //validation
             propTypes: {
-                allTodos: ReactPropTypes.object.isRequired
+                allTodos: ReactPropTypes.object.isRequired,
+                areAllComplete: ReactPropTypes.bool.isRequired
+            },
+
+            //UI actions
+            onToggleCompleteAll: function() {
+                TodoActions.toggleCompleteAll();
             },
 
             //returns object to be rendered.
@@ -20,16 +26,21 @@ var MainSection = React.createClass({
                 var todos = [];
 
                 for (var key in allTodos) {
-                    todos.push( <TodoItem key={key}
-                        todo={allTodos[key]}
+                    todos.push( < TodoItem key = { key }
+                        todo = { allTodos[key] }
                         />);
                     }
 
                     return ( <section id = "main">
-
-                        <ul id="todo-list">{todos}</ul> 
-
-                        </section >
+                        <div id="toggle-all-div">
+                        <input id = "toggle-all"
+                        type = "checkbox"
+                        onChange = { this.onToggleCompleteAll }
+                        checked = { this.props.areAllComplete ? 'checked' : '' }
+                        /> 
+                        <label htmlFor = "toggle-all" > Mark all as complete </label> 
+                        </div>
+                        <ul id = "todo-list"> { todos } </ul> </section>
                     );
 
                 }

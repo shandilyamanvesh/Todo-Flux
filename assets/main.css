@@ -12,6 +12,8 @@ body {
     background: #eaeaea url('bg.png');
     color: #4d4d4d;
     margin: 0 auto;
+    width: 600px;
+    height: 101vh;
     -webkit-font-smoothing: antialiased;
     -moz-font-smoothing: antialiased;
     -ms-font-smoothing: antialiased;
@@ -31,6 +33,17 @@ body {
     border-top-left-radius: 2px;
     border-top-right-radius: 2px;
     box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.15);
+}
+
+#todoapp:before {
+    content: '';
+    border-left: 1px solid #f5d6d6;
+    border-right: 1px solid #f5d6d6;
+    width: 2px;
+    position: absolute;
+    top: 0;
+    left: 40px;
+    height: 100%;
 }
 
 #todoapp input::-webkit-input-placeholder {
@@ -180,7 +193,7 @@ body {
     /* auto, since non-WebKit browsers doesn't support input styling */
     height: auto;
     position: absolute;
-    top: 0;
+    top: 10;
     bottom: 0;
     margin: auto 0;
     /* Mobile Safari */
@@ -259,4 +272,113 @@ body {
 
 #todo-list li.editing:last-child {
     margin-bottom: -1px;
+}
+
+
+/* button css */
+
+button {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: none;
+    font-size: 100%;
+    vertical-align: baseline;
+    font-family: inherit;
+    color: inherit;
+    -webkit-appearance: none;
+    -ms-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+}
+
+button,
+input[type="checkbox"] {
+    outline: none;
+}
+
+
+/* header toggle all css */
+
+label[for='toggle-all'] {
+    margin-left: 15px;
+}
+
+#toggle-all {
+    margin-left: 15px;
+}
+
+#toggle-all-div {
+    border-bottom: 1px dotted #ccc;
+}
+
+
+/* footer content css*/
+
+#footer {
+    color: #777;
+    padding: 0 15px;
+    position: absolute;
+    right: 0;
+    bottom: -31px;
+    left: 0;
+    height: 20px;
+    z-index: 1;
+    text-align: center;
+}
+
+#footer:before {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: 31px;
+    left: 0;
+    height: 50px;
+    z-index: -1;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3), 0 6px 0 -3px rgba(255, 255, 255, 0.8), 0 7px 1px -3px rgba(0, 0, 0, 0.3), 0 43px 0 -6px rgba(255, 255, 255, 0.8), 0 44px 2px -6px rgba(0, 0, 0, 0.2);
+}
+
+#todo-count {
+    float: left;
+    text-align: left;
+}
+
+#filters {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    position: absolute;
+    right: 0;
+    left: 0;
+}
+
+#filters li {
+    display: inline;
+}
+
+#filters li a {
+    color: #83756f;
+    margin: 2px;
+    text-decoration: none;
+}
+
+#filters li a.selected {
+    font-weight: bold;
+}
+
+#clear-completed {
+    float: right;
+    position: relative;
+    line-height: 20px;
+    text-decoration: none;
+    background: rgba(0, 0, 0, 0.1);
+    font-size: 11px;
+    padding: 0 10px;
+    border-radius: 3px;
+    box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.2);
+}
+
+#clear-completed:hover {
+    background: rgba(0, 0, 0, 0.15);
+    box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.3);
 }
